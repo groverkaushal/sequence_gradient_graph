@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html lang="en>">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name = "viewport" content="width=device-width, initial-scale=1.0">
+        <title> Home Page </title>
+    </head>
+    <body>
+
+
+        <h2>Assignment - Kaushal Grover</h2>
+        <br>
+        <h4>This project takes multiple fasta format nucleotide sequences and aligns them with MUSCLE API.</h4>
+        <h4>The aligned sequences are then plotted with matplotlib.</h4>
+        <h4>Parameters can also be provided to filter out specific sequences from the alignment.</h4>
+        <br><br>
+        
+        <h2>Paste the sequences below in fasta format</h2>
+        <h3>By default colours are A:Red, T:Blue, G:Green, C:Orange, P:Black, Q:Brown, R:Violet, S:Purple, U:Pink, -:White</h3><br>
+
+        <form action="#" method="post">
+            <ul>
+                <li>
+                    <label for="fasta sequence">fasta sequence:</label>
+                    <textarea id="input_seq" name="input_seq"></textarea>
+                </li>
+                <li>
+                    <label for="parameters">parameters(Eg. ATGCC P):</label>
+                    <textarea id="parameters" name="parameters"></textarea>
+                </li>
+                <li>
+                    <label for="parameter_length">parameter_length:</label>
+                    <textarea id="parameter_length" name="parameter_length"></textarea>
+                </li>
+                <li>
+                    <label for="colours">colours(Eg. A Red)(note:leave an empty line at the bottom):</label>
+                    <textarea id="colours" name="colours"></textarea>
+                </li>
+                <br>
+                <input type="submit" value="Submit">
+            </ul>
+            
+        </form> 
+
+
+
+    </body>
+</html>
