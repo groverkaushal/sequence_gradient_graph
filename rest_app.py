@@ -77,23 +77,26 @@ def home():
         # parameters = {"ATGCA":"P" , "TCATG":"Q" , "TAGTT":"R" , "GTACT":"S" , "GGAAT":"T"}
 
         
-
         def MSA_fasta(sequence):
-            count = str(len(sequence))
-            urladder = ""
+            urladder = ">\n"
+
+            url = "https://www.ebi.ac.uk/Tools/services/rest/muscle/run"
+
+            headers = {
+                'Accept': 'text/plain',
+            }
+
             for i in range(len(sequence)):
                 if i == len(sequence)-1:
                     urladder = urladder + sequence[i]
                 else:
-                    urladder = urladder + sequence[i] + "%0A%0A%" + count +"E%0A"
+                    urladder = urladder + sequence[i] + "\n>\n"
 
-            url = "https://www.ebi.ac.uk/Tools/services/rest/muscle/run"
-
-            headers = CaseInsensitiveDict()
-            headers["Content-Type"] = "application/x-www-form-urlencoded"
-            headers["Accept"] = "text/plain"
-
-            data = "email=yehhaibot1%40gmail.com&format=fasta&sequence=%"+ count + "E%0A" + urladder 
+            data = {
+                'email': 'yehhaibot1@gmail.com',
+                'format': 'fasta',
+                'sequence': urladder,
+            }
 
             resp = requests.post(url, headers=headers, data=data)
 
