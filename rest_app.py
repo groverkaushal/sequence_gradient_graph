@@ -2,10 +2,9 @@ from flask import Flask, redirect, url_for, render_template, request
 import requests
 from requests.structures import CaseInsensitiveDict
 import matplotlib.pyplot as plt
-import logomaker as lm
 import numpy as np
 import pandas as pd
-
+import logomaker as lm
 
 app = Flask(__name__)
 
@@ -16,6 +15,7 @@ def home():
         parameter_ = request.form["parameters"]
         colour = request.form["colours"]
         parameters_length = int(request.form["parameter_length"])
+        options_select = request.form["options"]
 
         temp = ""
         parameters = {}
@@ -39,6 +39,8 @@ def home():
             tt = ""
 
             for i in sequence:
+                if i == "\r":
+                    continue
                 if i == ">":
                     subs = True
                 if subs == True:
@@ -79,7 +81,6 @@ def home():
 
         # parameters = {"ATGCA":"P" , "TCATG":"Q" , "TAGTT":"R" , "GTACT":"S" , "GGAAT":"T"}
 
-        
         def MSA_fasta(sequence):
             urladder = ">\n"
 
@@ -124,9 +125,22 @@ def home():
 
             return alignedseq
 
-
-        alignedseq = MSA_fasta(seq)
-        aligned_seq = fasta_to_list(alignedseq)
+        if options_select == "Yes":
+            alignedseq = MSA_fasta(seq)
+            aligned_seq = fasta_to_list(alignedseq)
+        else:
+            aligned_seq = []
+            count = []
+            for i in range(len(seq)):
+                    count.append(len(seq[i]))
+            for i in range(len(seq)):
+                    temp = ""
+                    temp = temp + seq[i]
+                    if (max(count)-len(temp))%2 == 0:
+                        temp = int((max(count)-len(temp))/2)*"-" + temp + int((max(count)-len(temp))/2)*"-"
+                    else:
+                        temp = ((max(count)-len(temp))//2)*"-" + temp + (((max(count)-len(temp))//2)+1)*"-"
+                    aligned_seq.append(temp)
 
 
         def p_generator(sequence):
@@ -151,40 +165,16 @@ def home():
         for i in range(len(aligned_seq)):
             aligned_seq_p.append(p_generator(aligned_seq[i]))
 
+
         counts_mat = lm.alignment_to_matrix(sequences=aligned_seq_p, to_type='information', characters_to_ignore='.-X')
         counts_mat.head()
         lm.Logo(counts_mat)
 
         plt.savefig('static/plot.png', format='png', dpi=500)
-
-#         y_axis = []
-#         for i in range(len(aligned_seq_p)):
-#             temp = []
-#             for j in aligned_seq_p[i]:
-#                 if j != "-":
-#                     temp.append(0.2)
-#                 else:
-#                     temp.append(0)
-#             y_axis.append(temp)
-#         temp = []
-#         for i in range(len(aligned_seq_p[0])):
-#             temp.append(0)
-#         for _ in range(len(aligned_seq_p)):
-#             data_colours = []
-#             if _ >= 1:
-#                 result = [sum(z) for z in zip(temp, y_axis[_-1])]
-#                 temp = result
-#             for i in aligned_seq_p[_]:
-#                 data_colours.append(colours[i])
-#             if _ == 0:
-#                 plt.bar(range(len(aligned_seq_p[0])), y_axis[_], color=data_colours,width=0.5)
-#             else:
-#                 plt.bar(range(len(aligned_seq_p[0])), y_axis[_], bottom=result, color=data_colours,width=0.5)
-#         plt.gcf().set_size_inches(16, 2)
-#         plt.savefig('static/plot.png', format='png', dpi=500)
         
 
-        return render_template("result.html", a = alignedseq , b = aligned_seq_p , c = colours ,d = parameters)
+        return render_template("result.html", a = aligned_seq , b = aligned_seq_p , c = colours ,d = parameters)
+        
     else:
         return render_template("index.html")
 
