@@ -166,7 +166,7 @@ def home():
             aligned_seq_p.append(p_generator(aligned_seq[i]))
 
 
-        counts_mat = lm.alignment_to_matrix(sequences=aligned_seq_p, to_type='information', characters_to_ignore='.-X')
+        counts_mat = lm.alignment_to_matrix(sequences=aligned_seq_p, to_type='information', characters_to_ignore='.-')
         counts_mat.head()
         lm.Logo(counts_mat)
 
