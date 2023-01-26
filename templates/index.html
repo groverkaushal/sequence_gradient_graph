@@ -1,50 +1,190 @@
-
 <!DOCTYPE html>
-<html lang="en>">
+<html lang="en">
     <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name = "viewport" content="width=device-width, initial-scale=1.0">
-        <title> Home Page </title>
-    </head>
-    <body>
-
-
-        <h2>Assignment - Kaushal Grover</h2>
-        <br>
-        <h4>This project takes multiple fasta format nucleotide sequences and aligns them with MUSCLE API.</h4>
-        <h4>The aligned sequences are then plotted with matplotlib.</h4>
-        <h4>Parameters can also be provided to filter out specific sequences from the alignment.</h4>
-        <br><br>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Grayscale - Start Bootstrap Theme</title>
+        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles.css') }}">
+        <script src="{{url_for('static', filename='scripts.js')}}"></script>
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
         
-        <h2>Paste the sequences below in fasta format</h2>
-        <h3>By default colours are A:Red, T:Blue, G:Green, C:Orange, P:Black, Q:Brown, R:Violet, S:Purple, U:Pink, -:White</h3><br>
+    </head>
+    <body id="page-top">
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+            <div class="container px-4 px-lg-5">
+                <a class="navbar-brand" href="#page-top">Assignment Kaushal</a>
+                <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                        
+                        <li class="nav-item"><a class="nav-link" href="#signup">Contact</a></li>
+                    </ul>
 
-        <form action="#" method="post">
-            <ul>
-                <li>
-                    <label for="fasta sequence">fasta sequence:</label>
-                    <textarea id="input_seq" name="input_seq"></textarea>
-                </li>
-                <li>
-                    <label for="parameters">parameters(Eg. ATGCC P):</label>
-                    <textarea id="parameters" name="parameters"></textarea>
-                </li>
-                <li>
-                    <label for="parameter_length">parameter_length:</label>
-                    <textarea id="parameter_length" name="parameter_length"></textarea>
-                </li>
-                <li>
-                    <label for="colours">colours(Eg. A Red)(note:leave an empty line at the bottom):</label>
-                    <textarea id="colours" name="colours"></textarea>
-                </li>
-                <br>
-                <input type="submit" value="Submit">
-            </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Masthead-->
+        <div class="masthead">
+            <div class="container px-1 px-lg-3 d-flex h-50 align-items-center justify-content-center">
+            <br><br><br><br>
+    
+                        <h1 class="mx-auto my-0 text-uppercase text-center">Tool Name</h1>
+                        <h2 class="text-white-50 mx-auto mt-2 mb-5 text-center">This project takes multiple fasta format nucleotide sequences and aligns them with MUSCLE API.<br><br> The aligned sequences are then plotted with matplotlib.</h2>
+                        
+
+            </div>
             
-        </form> 
+                <div class="container px-4 px-lg-5 text-center">
+                    <div class="row gx-4 gx-lg-5 justify-content-center">
+                        <div class="col-lg-8"><br><br><br><br><br>
+                            <h3 class="text-white mb-4">Enter the details of the nucleotide sequence below :</h3>
+                            <p class="text-white-50">
+                            Parameters can also be provided to filter out specific sequences from the alignment.
+                            </p>
+                            <br><br>
+                        </div>
+                    </div>
+                </div>
+            
+        </div>
+        <!-- About-->
+        
+        
+            
+                
+                        
 
+                
+            <div class="about-section" id="about">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5">
+                
+                    <div class="col-md-18 col-lg-12 mx-auto">
+                        
+                        
+                        <!-- * * * * * * * * * * * * * * *-->
+                        <!-- * * SB Forms Contact Form * *-->
+                        <!-- * * * * * * * * * * * * * * *-->
+                        <!-- This form is pre-integrated with SB Forms.-->
+                        <!-- To make this form functional, sign up at-->
+                        <!-- https://startbootstrap.com/solution/contact-forms-->
+                        <!-- to get an API token!-->
+                        <form class="form-signup" action="#" method="post">
+                            <!-- Email address input-->
+                            <div class="row input-group-newsletter">
+                                <div class="col">
+                                <p class="text-white mb-5">Paste the fasta sequence:
+                                <textarea class="form-control" rows="8" name="input_seq" required="required" id="input_seq" placeholder=">XM_046908122.1 Gallus gallus, transcript variant X4&#10;GGGGAGACGAGAGGAGGGCCGGGGAGCGATGAGGCCGCATCCGTGACGGGGCCCGCGGAGCCCGCGCTTG&#10;GGCCGGCCCCTCC&#10;>MG707190.1 Ctenopharyngodon idella STK24 mRNA&#10;TCTGGCCTGCATGAACCTCCAAAACCCACTCCAGGAGTCACCAAAAGAGCGTTTCAACGTCAGATCGCAC&#10;GCCACATCGACTGA&#10;..." aria-label="Paste the fasta sequence:"></textarea></div>
+                            </div>
+                            <div class="row input-group-newsletter">
+                                <div class="col">
+                                <p class="text-white mb-5">Specify the parameters: (Each parameter should be of the same length)
+                                <textarea class="form-control" rows="4" name="parameters" id="parameters" required="required" placeholder="ATGCC P&#10;TTGAC Q&#10;..." aria-label="Specify the parameters:"></textarea></div>
+                            </div>
+                            <div class="row input-group-newsletter">
+                                <div class="col">
+                                <p class="text-white mb-5">Specify the colours:  (By default the colours are A:Red, T:Blue, G:Green, C:Orange, P:Black, Q:Brown, R:Violet, S:Purple, U:Pink, -:White)
+                                <textarea class="form-control" rows="4" name="colours" id="colours" placeholder="A Red&#10;P Blue&#10;..." aria-label="Specify the parameters:"></textarea></div>
+                            </div>
+                            <div class="row input-group-newsletter">
+                                <div class="col">
+                                <p class="text-white mb-5">Do you want to multiple align the sequence?:<br>
+                                <input type="radio" id="Yes" name="options" value="Yes">
+                                <label for="Yes">Yes</label><br>
+                                <input type="radio" id="No" name="options" value="No">
+                                <label for="No">No</label><br>
+                            </div>
 
-
+                            <div class="row input-group-newsletter">
+                                <div><input class="btn btn-primary" id="submitButton" type="submit" value="Submit"></div><br><br><br><br><br><br>
+                            </div>
+                            
+                            <!-- Submit success message-->
+                            <!---->
+                            <!-- This is what your users will see when the form-->
+                            <!-- has successfully submitted-->
+                            <div class="d-none" id="submitSuccessMessage">
+                                <div class="text-center mb-3 mt-2 text-white">
+                                    <div class="fw-bolder">Form submission successful! Processing...</div>
+                                    
+                                </div>
+                            </div>
+                            <!-- Submit error message-->
+                            <!---->
+                            <!-- This is what your users will see when there is-->
+                            <!-- an error submitting the form-->
+                            
+                        </form>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        <!-- Contact-->
+        <section class="contact-section bg-black">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5">
+                    <div class="col-md-4 mb-3 mb-md-0">
+                        <div class="card py-4 h-100">
+                            <div class="card-body text-center">
+                                <i class="fas fa-map-marked-alt text-primary mb-2"></i>
+                                <h4 class="text-uppercase m-0">Address</h4>
+                                <hr class="my-4 mx-auto" />
+                                <div class="small text-black-50">4923 Market Street, Orlando FL</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3 mb-md-0">
+                        <div class="card py-4 h-100">
+                            <div class="card-body text-center">
+                                <i class="fas fa-envelope text-primary mb-2"></i>
+                                <h4 class="text-uppercase m-0">Email</h4>
+                                <hr class="my-4 mx-auto" />
+                                <div class="small text-black-50"><a href="#!">hello@yourdomain.com</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3 mb-md-0">
+                        <div class="card py-4 h-100">
+                            <div class="card-body text-center">
+                                <i class="fas fa-mobile-alt text-primary mb-2"></i>
+                                <h4 class="text-uppercase m-0">Phone</h4>
+                                <hr class="my-4 mx-auto" />
+                                <div class="small text-black-50">+1 (555) 902-8832</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="social d-flex justify-content-center">
+                    <a class="mx-2" href="#!"><i class="fab fa-twitter"></i></a>
+                    <a class="mx-2" href="#!"><i class="fab fa-facebook-f"></i></a>
+                    <a class="mx-2" href="#!"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </section>
+        <!-- Footer-->
+        <footer class="footer bg-black small text-center text-white-50"><div class="container px-4 px-lg-5">Copyright &copy; Your Website 2022</div></footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        
+        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        <!-- * *                               SB Forms JS                               * *-->
+        <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
     </body>
 </html>
