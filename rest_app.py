@@ -14,8 +14,18 @@ def home():
         inputseq = request.form["input_seq"]
         parameter_ = request.form["parameters"]
         colour = request.form["colours"]
-        parameters_length = int(request.form["parameter_length"])
+        # parameters_length = int(request.form["parameter_length"])
         options_select = request.form["options"]
+
+
+        # parameters_length = 0
+        # for i in parameter_:
+        #     if i!=" ":
+        #         parameters_length = parameters_length + 1
+        #     else:
+        #         break
+
+        parameters_length = 5
 
         temp = ""
         parameters = {}
@@ -166,14 +176,21 @@ def home():
             aligned_seq_p.append(p_generator(aligned_seq[i]))
 
 
-        counts_mat = lm.alignment_to_matrix(sequences=aligned_seq_p, to_type='information', characters_to_ignore='.-')
+        counts_mat = lm.alignment_to_matrix(sequences=aligned_seq_p, to_type='information', characters_to_ignore='.-X')
         counts_mat.head()
         lm.Logo(counts_mat)
 
         plt.savefig('static/plot.png', format='png', dpi=500)
+
+        temp1234 = []
+        
+        for i in aligned_seq:
+            temp123 = ""
+            temp123 = i + "&#10;"
+            temp1234.append(temp123)
         
 
-        return render_template("result.html", a = aligned_seq , b = aligned_seq_p , c = colours ,d = parameters)
+        return render_template("result.html", a = temp1234 , b = aligned_seq_p , c = colours ,d = parameters)
         
     else:
         return render_template("index.html")
@@ -183,3 +200,6 @@ def home():
 
 if __name__ == "__main__":
     app.run(debug=False,host="0.0.0.0")
+
+
+# <div class="col-xl-8 col-lg-7"><img class="img-fluid mb-3 mb-lg-0" src="{{url_for('static', filename='bg-masthead.jpg')}}" alt="..." /></div>
