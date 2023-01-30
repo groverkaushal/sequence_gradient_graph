@@ -16,32 +16,34 @@ def home():
         colour = request.form["colours"]
         # parameters_length = int(request.form["parameter_length"])
         options_select = request.form["options"]
-
-
-        # parameters_length = 0
-        # for i in parameter_:
-        #     if i!=" ":
-        #         parameters_length = parameters_length + 1
-        #     else:
-        #         break
-
-        parameters_length = 5
-
-        temp = ""
         parameters = {}
-        for i in range(len(parameter_)):
-            if parameter_[i] == " ":
-                parameters[temp] = parameter_[i+1]
-                temp = ""
-                continue
-            if parameter_[i-1] == " ":
-                continue
-            if parameter_[i] == "\n":
-                continue
-            if parameter_[i] == "\r":
-                continue
-            temp = temp + parameter_[i]
-        temp = ""
+
+        if len(parameter_)==0:
+            parameters_length = 0
+        else:
+            parameters_length = 0
+            for i in parameter_:
+                if i!=" ":
+                    parameters_length = parameters_length + 1
+                else:
+                    break
+                
+            temp = ""
+            for i in range(len(parameter_)):
+                if parameter_[i] == " ":
+                    parameters[temp] = parameter_[i+1]
+                    temp = ""
+                    continue
+                if parameter_[i-1] == " ":
+                    continue
+                if parameter_[i] == "\n":
+                    continue
+                if parameter_[i] == "\r":
+                    continue
+                temp = temp + parameter_[i]
+            temp = ""
+
+        
 
         def fasta_to_list(sequence):
             sequence = sequence + ">\n"
@@ -73,7 +75,7 @@ def home():
         seq = fasta_to_list(inputseq)
 
         colours = {"A":'Red',"T":'Blue',"G":'Green',"C":'Orange',"P":'Black',"Q":'Brown',"R":'Violet', "S":'Purple',"U":'Pink',"-":'White'}
-        # colour = colour[0:len(colour)-1]
+        
         colour = colour + "\r"
         temp = ""
         temp1 = ""
@@ -170,10 +172,12 @@ def home():
             return l
 
 
-
-        aligned_seq_p = []
-        for i in range(len(aligned_seq)):
-            aligned_seq_p.append(p_generator(aligned_seq[i]))
+        if parameters_length==0:
+            aligned_seq_p = aligned_seq.copy()
+        else:
+            aligned_seq_p = []
+            for i in range(len(aligned_seq)):
+                aligned_seq_p.append(p_generator(aligned_seq[i]))
 
 
         counts_mat = lm.alignment_to_matrix(sequences=aligned_seq_p, to_type='information', characters_to_ignore='.-X')
@@ -181,16 +185,9 @@ def home():
         lm.Logo(counts_mat)
 
         plt.savefig('static/plot.png', format='png', dpi=500)
-
-        temp1234 = []
-        
-        for i in aligned_seq:
-            temp123 = ""
-            temp123 = i + "&#10;"
-            temp1234.append(temp123)
         
 
-        return render_template("result.html", a = temp1234 , b = aligned_seq_p , c = colours ,d = parameters)
+        return render_template("result.html", a = aligned_seq , b = aligned_seq_p , c = colours ,d = parameters)
         
     else:
         return render_template("index.html")
