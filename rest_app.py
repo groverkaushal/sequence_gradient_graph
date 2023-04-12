@@ -199,4 +199,3 @@ if __name__ == "__main__":
     app.run(debug=False,host="0.0.0.0")
 
 
-# <div class="col-xl-8 col-lg-7"><img class="img-fluid mb-3 mb-lg-0" src="{{url_for('static', filename='bg-masthead.jpg')}}" alt="..." /></div>
