@@ -12,7 +12,7 @@ The plots are displayed as output.
 
 Clone the repsitory
 ```
-git clone https://github.com/your-username/flask-app.git
+git clone https://github.com/Blassreiter0/sequence_gradient_graph.git
 ```
 
 Create a virtual environment:
